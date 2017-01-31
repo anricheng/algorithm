@@ -2,18 +2,19 @@
 #include <algorithm>
 #include "selectSort.h"
 #include "Student.h"
+#include "sortHelper.h"
+#include "insertSort.h"
 int main() {
 
     //selectSort verify start
+    int n =100;
+    int *arr = SortHelper::generateRandomArray(n,0,n);
 
-    int arr[10]={1,4,3,8,0,9,5,2,6,7};
-
+    int* arrInsert = arr;
     float arr1[10]={1.4,4.0,3.2,8.5,0.6,9.8,5.6,2.6,6.9,7.0};
-
-    selectionSort(arr,10);
-    for (int i = 0; i < 10; ++i) {
-        cout<<arr[i]<<"  ";
-    }
+    selectionSort(arr,n);
+    SortHelper::testSort("selectionSort",selectionSort,arr,n);
+    SortHelper::printArray(arr,n);
 
 
 
@@ -34,6 +35,16 @@ int main() {
 
     }
     //selectSort verify end;
+
+
+    /**
+     * insertSort test start
+     */
+
+    insertSort(arrInsert,n);
+    SortHelper::testSort("insertSort",insertSort,arrInsert,n);
+    SortHelper::printArray(arrInsert,n);
+
 
     return 0;
 }
